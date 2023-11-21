@@ -1,0 +1,47 @@
+{
+  "parameters": {
+    "api-version": "TBD",
+    "subscriptionId": "subid1",
+    "resourceGroupName": "rg1",
+    "resourceName": "clustername1",
+    "loadBalancerConfigurationName": "kubernetes",
+    "parameters": {
+      "properties": {
+        "autoPlaceServices": true,
+        "primaryAgentPoolId": "/subscriptions/subid1/resourcegroups/rg1/providers/Microsoft.ContainerService/managedClusters/clustername1/agentPools/agentpool1",
+        "serviceNamespaceSelector": {
+          "matchLabels": {
+            "tenant": "team1"
+          }
+        },
+        "nodeSelector": {
+          "matchExpressions": [
+            {"key": "zone", "operator": "In", "values": ["1", ""]}
+          ]
+        }
+      }
+    }
+  },
+  "responses": {
+    "200": {
+      "body": {
+        "id": "/subscriptions/subid1/resourcegroups/rg1/providers/Microsoft.ContainerService/managedClusters/clustername1/loadBalancerConfigurations/kubernetes",
+        "name": "kubernetes",
+        "properties": {
+          "autoPlaceServices": true,
+          "primaryAgentPoolId": "/subscriptions/subid1/resourcegroups/rg1/providers/Microsoft.ContainerService/managedClusters/clustername1/agentPools/agentpool1",
+          "serviceNamespaceSelector": {
+            "matchLabels": {
+              "tenant": "team1"
+            }
+          },
+          "nodeSelector": {
+            "matchExpressions": [
+              {"key": "zone", "operator": "In", "values": ["1", ""]}
+            ]
+          }
+        }
+      }
+    }
+  }
+}

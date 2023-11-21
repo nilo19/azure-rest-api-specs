@@ -3038,6 +3038,261 @@
           }
         }
       }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/loadBalancerConfigurations": {
+      "get": {
+        "tags": [
+          "LoadBalancerConfigurations"
+        ],
+        "operationId": "LoadBalancerConfigurations_List",
+        "summary": "Gets a list of load balancer configurations in the specified managed cluster.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceNameParameter"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LoadBalancerConfigurationListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-pageable": {
+          "nextLinkName": "nextLink"
+        },
+        "x-ms-examples": {
+          "List Agent Pools by Managed Cluster": {
+            "$ref": "./examples/LoadBalancerConfigurationsList.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/loadBalancerConfigurations/{loadBalancerConfigurationName}": {
+      "get": {
+        "tags": [
+          "LoadBalancerConfigurations"
+        ],
+        "operationId": "LoadBalancerConfigurations_Get",
+        "summary": "Gets the specified load balancer configuration.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceNameParameter"
+          },
+          {
+            "name": "loadBalancerConfigurationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "pattern": "^[a-z][a-z0-9]{0,11}$",
+            "minLength": 1,
+            "maxLength": 12,
+            "description": "The name of the load balancer configuration."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LoadBalancerConfiguration"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-examples": {
+          "Get Load Balancer Configuration": {
+            "$ref": "./examples/LoadBalancerConfigurationsGet.json"
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "LoadBalancerConfigurations"
+        ],
+        "operationId": "LoadBalancerConfigurations_CreateOrUpdate",
+        "summary": "Creates or updates a load balancer configuration in the specified managed cluster.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceNameParameter"
+          },
+          {
+            "name": "loadBalancerConfigurationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the load balancer configuration."
+          },
+          {
+            "name": "parameters",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/LoadBalancerConfiguration"
+            },
+            "description": "The load balancer configuration to create or update."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LoadBalancerConfiguration"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": false,
+        "x-ms-examples": {
+          "Create/Update Load Balancer Configuration": {
+            "$ref": "./examples/LoadBalancerConfigurationsCreate_Update.json"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "LoadBalancerConfigurations"
+        ],
+        "operationId": "LoadBalancerConfigurations_Delete",
+        "summary": "Deletes a load balancer configuration in the specified managed cluster.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceNameParameter"
+          },
+          {
+            "name": "loadBalancerConfigurationName",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "The name of the load balancer configuration."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "NoContent"
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": false,
+        "x-ms-examples": {
+          "Delete Load Balancer Configuration": {
+            "$ref": "./examples/LoadBalancerConfigurationsDelete.json"
+          }
+        }
+      }
+    },
+    "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.ContainerService/managedClusters/{resourceName}/rebalanceLoadBalancers": {
+      "post": {
+        "tags": [
+          "LoadBalancerConfigurations"
+        ],
+        "operationId": "LoadBalancerConfigurations_Rebalance",
+        "summary": "Rebalance nodes across all existing load balancers.",
+        "parameters": [
+          {
+            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ApiVersionParameter"
+          },
+          {
+            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/SubscriptionIdParameter"
+          },
+          {
+            "$ref": "../../../../../../common-types/resource-management/v3/types.json#/parameters/ResourceGroupNameParameter"
+          },
+          {
+            "$ref": "#/parameters/ResourceNameParameter"
+          },
+          {
+            "name": "loadBalancerConfigurations",
+            "in": "path",
+            "required": false,
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "The names of the load balancer configurations to be rebalanced. If not supplied, all load balancer configurations will be rebalanced."
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/LoadBalancerConfigurationListResult"
+            }
+          },
+          "default": {
+            "description": "Error response describing why the operation failed.",
+            "schema": {
+              "$ref": "#/definitions/CloudError"
+            }
+          }
+        },
+        "x-ms-long-running-operation": true,
+        "x-ms-examples": {
+          "Rebalance Nodes Across Load Balancers": {
+            "$ref": "./examples/LoadBalancerConfigurationsRebalance.json"
+          }
+        }
+      }
     }
   },
   "definitions": {
@@ -4460,10 +4715,6 @@
           "description": "Desired outbound flow idle timeout in minutes. Allowed values are in the range of 4 to 120 (inclusive). The default value is 30 minutes.",
           "default": 30
         },
-        "enableMultipleStandardLoadBalancers": {
-          "type": "boolean",
-          "description": "Enable multiple standard load balancers per AKS cluster or not."
-        },
         "backendPoolType": {
           "type": "string",
           "x-ms-enum": {
@@ -4486,6 +4737,14 @@
           ],
           "description": "The type of the managed inbound Load Balancer BackendPool.",
           "default": "NodeIPConfiguration"
+        },
+        "LoadBalancerConfigurations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LoadBalancerConfigurationProperties"
+          },
+          "x-ms-identifiers": [],
+          "description": "The load balancer configuration properties."
         }
       },
       "description": "Profile of the managed cluster load balancer."
@@ -7658,6 +7917,120 @@
         "mode",
         "enabled"
       ]
+    },
+    "LoadBalancerConfigurationListResult": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LoadBalancerConfiguration"
+          },
+          "description": "The list of Load Balancer Configurations."
+        },
+        "nextLink": {
+          "type": "string",
+          "description": "The URL to get the next set of load balancer configuration results.",
+          "readOnly": true
+        }
+      },
+      "description": "The response from the List Load Balancer Configurations operation."
+    },
+    "LoadBalancerConfiguration": {
+      "type": "object",
+      "allOf": [
+        {
+          "$ref": "#/definitions/SubResource"
+        }
+      ],
+      "properties": {
+        "properties": {
+          "description": "Properties of a load balancer configuration.",
+          "$ref": "#/definitions/LoadBalancerConfigurationProperties",
+          "x-ms-client-flatten": true
+        }
+      },
+      "description": "The configurations regarding multiple standard load balancers. If not supplied, single load balancer mode will be used. Multiple standard load balancers mode will be used if at lease one configuration is supplied. There has to be a configuration named `kubernetes`."
+    },
+    "LoadBalancerConfigurationProperties": {
+      "type": "object",
+      "description": "Properties of a load balancer configuration.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Name of the public load balancer. There will be an internal load balancer created if needed, and the name will be `<name>-internal`. The internal lb shares the same configurations as the external one. The internal lbs are not needed to be included in `MultipleStandardLoadBalancerConfigurations`. There must be a name of “kubernetes” in the load balancer configuration list."
+        },
+        "provisioningState": {
+          "readOnly": true,
+          "type": "string",
+          "description": "The current deployment or provisioning state."
+        },
+        "autoPlaceServices": {
+          "type": "boolean",
+          "description": "Whether to automatically place services on the load balancer. If not supplied, the default value is true. If set to false manually, both of the external and the internal load balancer will not be selected for services unless they explicitly target it."
+        },
+        "primaryAgentPoolId": {
+          "type": "string",
+          "description": "Required field. A string value that must specify the ID of an existing agent pool. All nodes in the given pool will always be added to this load balancer. This agent pool must have at least one node and minCount>=1 for autoscaling operations. An agent pool can only be the primary pool for a single load balancer configuration."
+        },
+        "serviceLabelSelector": {
+          "$ref": "#/definitions/LabelSelector",
+          "description": "Services that must match this selector can be placed on this load balancer."
+        },
+        "serviceNamespaceSelector": {
+          "$ref": "#/definitions/LabelSelector",
+          "description": "Services created in namespaces that match the selector can be placed on this load balancer."
+        },
+        "nodeSelector": {
+          "$ref": "#/definitions/LabelSelector",
+          "description": "Nodes that match this selector will be possible members of this load balancer."
+        }
+      },
+      "required": [
+        "name",
+        "PrimaryAgentPoolId"
+      ]
+    },
+    "LabelSelector": {
+      "type": "object",
+      "description": "A label selector is a label query over a set of resources. The result of matchLabels and matchExpressions are ANDed. An empty label selector matches all objects. A null label selector matches no objects.",
+      "properties": {
+        "matchLabels": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          },
+          "description": "matchLabels is a map of {key,value} pairs. A single {key,value} in the matchLabels map is equivalent to an element of matchExpressions, whose key field is `key`, the operator is `In`, and the values array contains only `value`. The requirements are ANDed."
+        },
+        "matchExpressions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/LabelSelectorRequirement"
+          },
+          "description": "matchExpressions is a list of label selector requirements. The requirements are ANDed."
+        }
+      }
+    },
+    "LabelSelectorRequirement": {
+      "type": "object",
+      "description": "A label selector requirement is a selector that contains values, a key, and an operator that relates the key and values.",
+      "properties": {
+        "key": {
+          "type": "string",
+          "description": "key is the label key that the selector applies to."
+        },
+        "operator": {
+          "type": "string",
+          "description": "operator represents a key's relationship to a set of values. Valid operators are In, NotIn, Exists and DoesNotExist."
+        },
+        "values": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty. This array is replaced during a strategic merge patch."
+        }
+      }
     }
   },
   "parameters": {

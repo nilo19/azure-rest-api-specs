@@ -1,0 +1,13 @@
+{
+  "parameters": {
+    "api-version": "TBD",
+    "subscriptionId": "subid1",
+    "resourceGroupName": "rg1",
+    "resourceName": "clustername1",
+    "loadBalancerConfigurationName": "kubernetes"
+  },
+  "responses": {
+    "200": {},
+    "204": {}
+  }
+}
